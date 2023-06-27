@@ -18,6 +18,4 @@ emitter = DatahubRestEmitter("http://localhost:8080")
 # Emit metadata!
 emitter.emit_mce(lineage_mce)
 
-print("hello")
-
 # solar-energy-consumption.csv
