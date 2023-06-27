@@ -1,0 +1,17 @@
+source:
+  type: s3
+  config:
+    path_specs:
+      -
+        include: "s3://datahub-cq/raw_data/*.csv"
+
+    aws_config:
+      aws_access_key_id: ${AWS_KEY}
+      aws_secret_access_key: ${AWS_SECRET}
+      aws_region: us-west-2
+    env: "PROD"
+    profiling:
+      enabled: true
+      include_field_max_value: true
+
+# sink configs
