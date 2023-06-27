@@ -14,4 +14,7 @@ source:
       enabled: true
       include_field_max_value: true
 
-# sink configs
+sink:
+  type: file
+  config:
+    filename: /Users/catherine.quilley/Documents/Projects/datahub-demo/output/output.json
