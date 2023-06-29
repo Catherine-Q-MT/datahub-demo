@@ -3,7 +3,7 @@ source:
   config:
     path_specs:
       -
-        include: "s3://datahub-cq/raw_data/*.csv"
+        include: "s3://datahub-cq/processed_data/glue_studio_output/*.parquet"
 
     aws_config:
       aws_access_key_id: ${AWS_KEY}
@@ -12,9 +12,5 @@ source:
     env: "PROD"
     profiling:
       enabled: true
-      include_field_max_value: true
 
-# sink:
-#   type: file
-#   config:
-#     filename: /Users/catherine.quilley/Documents/Projects/datahub-demo/output/output.json
+# sink configs

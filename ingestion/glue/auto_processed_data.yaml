@@ -1,0 +1,12 @@
+source:
+  type: glue
+  config:
+      aws_access_key_id: ${AWS_KEY}
+      aws_secret_access_key: ${AWS_SECRET}
+      aws_region: eu-west-2
+      emit_s3_lineage: true
+      glue_s3_lineage_direction: upstream
+      stateful_ingestion:
+        enabled: true
+
+pipeline_name: demo_pipeline
