@@ -7,7 +7,7 @@ name = "pypi"
 pip = "*"
 wheel = "*"
 setuptools = "*"
-acryl-datahub = {extras = ["glue"], version = "*"}
+acryl-datahub = {extras = ["s3"], version = "*"}
 
 [dev-packages]
 

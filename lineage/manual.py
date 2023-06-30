@@ -12,10 +12,12 @@ lineage_mce = builder.make_lineage_mce(
     builder.make_dataset_urn("s3", "uk_solar_and_hydro.csv"),  # Downstream
 )
 
+print( builder.make_dataset_urn("s3", "datahub-cq/raw_data/hydropower-consumption.csv"))
+
 # Create an emitter to the GMS REST API. Emitters can emit information and info can be accessed via API
 emitter = DatahubRestEmitter("http://localhost:8080")
 
 # Emit metadata!
-emitter.emit_mce(lineage_mce)
+# emitter.emit_mce(lineage_mce)
 
 # solar-energy-consumption.csv
