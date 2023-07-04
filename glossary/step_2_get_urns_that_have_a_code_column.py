@@ -51,20 +51,29 @@ def get_entities_associated_to_domain(domain_urn:str, graph: DataHubGraph)->List
         urn_list.append(val['entity']['urn'])
     return urn_list
 
-query_to_get_field_names_for_a_dataset = """ 
-  query {
-  dataset(urn: "urn:li:dataset:(urn:li:dataPlatform:s3,datahub-cq/raw_data/wind-generation.csv,PROD)") {
-    schemaMetadata {
-      fields {
-        fieldPath
-        description
-      }
-    }
-  }
-}"""
 
-result = graph.execute_graphql(query_to_get_field_names_for_a_dataset)
+# "urn:li:dataset:(urn:li:dataPlatform:s3,datahub-cq/raw_data/wind-generation.csv,PROD)"
+def get_field_names_for_dataset(dataset_urn:str, graph: DataHubGraph)->List[Dict]:
+    settings = {"dataset_urn":dataset_urn}
+    query_string = """ 
+      query {
+      dataset(urn:"$dataset_urn") {
+        schemaMetadata {
+          fields {
+            fieldPath
+            description
+          }
+        }
+      }
+    }"""
+    query = Template(query_string).substitute(**settings)
+    result = graph.execute_graphql(query=query)
+    fields_list = result.get('dataset').get('schemaMetadata').get('fields')
+    return fields_list
+
+
+result = get_field_names_for_dataset(dataset_urn="urn:li:dataset:(urn:li:dataPlatform:s3,datahub-cq/raw_data/wind-generation.csv,PROD)", graph=graph)
+
 print(result)
-fields_list = result.get('dataset').get('schemaMetadata').get('fields')
 
 gloassary_urn = "urn:li:glossaryTerm:81b95797-70dd-4656-9d9a-22b1e2d0dc6b"
