@@ -18,6 +18,6 @@ print( builder.make_dataset_urn("s3", "datahub-cq/raw_data/hydropower-consumptio
 emitter = DatahubRestEmitter("http://localhost:8080")
 
 # Emit metadata!
-# emitter.emit_mce(lineage_mce)
+emitter.emit_mce(lineage_mce)
 
 # solar-energy-consumption.csv

@@ -71,9 +71,17 @@ def get_field_names_for_dataset(dataset_urn:str, graph: DataHubGraph)->List[Dict
     fields_list = result.get('dataset').get('schemaMetadata').get('fields')
     return fields_list
 
+def get_list_of_datasets_that_contain_relevent_field(dataset_urn_list: List[str], field_to_look_for:str, graph: DataHubGraph):
+    
+    urns_that_contain_field=[]
+    field_to_look_for_fmt = field_to_look_for.lower()
+    for urn in dataset_urn_list:
+        fields = get_field_names_for_dataset(urn, graph)
+        for field in fields:
+            if field.get('fieldpath').lower()==field_to_look_for_fmt:
+                urns_that_contain_field.append(urn)
 
-result = get_field_names_for_dataset(dataset_urn="urn:li:dataset:(urn:li:dataPlatform:s3,datahub-cq/raw_data/wind-generation.csv,PROD)", graph=graph)
+    return urns_that_contain_field
 
-print(result)
-
+    
 gloassary_urn = "urn:li:glossaryTerm:81b95797-70dd-4656-9d9a-22b1e2d0dc6b"
