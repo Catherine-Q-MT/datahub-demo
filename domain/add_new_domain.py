@@ -5,6 +5,8 @@ from datahub.emitter.mcp import MetadataChangeProposalWrapper
 from datahub.emitter.rest_emitter import DatahubRestEmitter
 from datahub.metadata.schema_classes import ChangeTypeClass, DomainPropertiesClass
 
+from glossary.config_vars import gms_server
+
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
@@ -20,6 +22,6 @@ event: MetadataChangeProposalWrapper = MetadataChangeProposalWrapper(
     aspect=domain_properties_aspect,
 )
 
-rest_emitter = DatahubRestEmitter(gms_server="http://localhost:8080")
+rest_emitter = DatahubRestEmitter(gms_server=gms_server)
 rest_emitter.emit(event)
 log.info(f"Created domain {domain_urn}")

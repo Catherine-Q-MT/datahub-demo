@@ -12,11 +12,6 @@ from datahub.ingestion.graph.client import DatahubClientConfig, DataHubGraph
 from datahub.metadata.schema_classes import DomainsClass, ContainerClass, DatasetPropertiesClass, BrowsePathsV2Class
 from string import Template
 
-gms_endpoint = "http://localhost:8080"
-graph = DataHubGraph(DatahubClientConfig(server=gms_endpoint))
-
-domain_urn = 'urn:li:domain:renewable_raw_data'
-
 
 # you can get properties about a domain using some of the inbuilt methods like below:
 # domain_properties = graph.get_domain_properties(domain_urn)

@@ -1,13 +1,9 @@
 import logging
-import time
 from typing import Optional
 
-from datahub.emitter.mce_builder import make_dataset_urn, make_term_urn
 from datahub.emitter.mcp import MetadataChangeProposalWrapper
-
 # read-modify-write requires access to the DataHubGraph (RestEmitter is not enough)
 from datahub.ingestion.graph.client import DatahubClientConfig, DataHubGraph
-
 from datahub.metadata.schema_classes import (
     AuditStampClass,
     GlossaryTermAssociationClass,
