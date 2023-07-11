@@ -1,6 +1,6 @@
 # Datahub Demo
 
-This is a basic demo repo to showcase different ways of using data hub. 
+This is a basic demo repo to showcase different ways of using datahub. 
 
 To use it:
 * Have Docker Desktop installed on your machine
